@@ -5,7 +5,7 @@ export interface TechnologyProps {
 
 export const technologies: TechnologyProps[] = [
   { name: "React", icon: "/react.svg" },
-  { name: "Javascript", icon: "/javaScript.svg" },
+  { name: "JavaScript", icon: "/javascript.svg" },
   { name: "CSS", icon: "/css.svg" },
   { name: "Python", icon: "/python.svg" },
   { name: "TypeScript", icon: "/typescript.svg" },
