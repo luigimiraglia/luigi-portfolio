@@ -28,13 +28,13 @@ export default function HeroSection() {
           </Button>
         </div>
       </div>
-      <div className="relative mx-auto sm:mx-0">
+      <div className="relative mx-auto sm:mx-0 sm:w-1/2 overflow-y-hidden max-w-100 -mt-4 sm:-mt-6 lg:-mt-12 sm:-mb-8">
         <Image
           className="object-cover"
           alt="avatar"
           src="/avatar.png"
-          height={400}
-          width={400}
+          height={2250}
+          width={2098}
           priority
         />
       </div>
