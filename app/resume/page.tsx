@@ -26,8 +26,7 @@ export default function ResumePage() {
     try { window.dispatchEvent(new CustomEvent("gm:unlock", { detail: { id: "cv" } })); } catch {}
   }, []);
 
-  const baseW = 900; // px
-  const baseH = Math.floor(baseW * 1.414); // A4 ratio portrait
+  const baseW = 900; // px (used as max-width)
 
   return (
     <main className="mx-4 my-8 xl:mx-auto max-w-screen-xl">
@@ -47,8 +46,14 @@ export default function ResumePage() {
       <section className="glass-box overflow-auto px-3 py-3 sm:px-4 sm:py-4">
         <div className="flex justify-center">
           <div
-            className="rounded-xl bg-white shadow-[0_20px_50px_-25px_rgba(2,6,23,0.4)]"
-            style={{ width: baseW, height: baseH, transform: `scale(${scale})`, transformOrigin: "top center" }}
+            className="rounded-xl bg-white shadow-[0_20px_50px_-25px_rgba(2,6,23,0.4)] w-full"
+            style={{
+              width: "100%",
+              maxWidth: baseW,
+              aspectRatio: "1 / 1.414",
+              transform: `scale(${scale})`,
+              transformOrigin: "top center",
+            }}
           >
             <object data={resumeUrl} type="application/pdf" className="h-full w-full rounded-xl">
               <div className="p-6 text-center text-sm text-neutral-700">

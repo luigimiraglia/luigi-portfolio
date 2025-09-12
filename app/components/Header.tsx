@@ -2,8 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  // Close mobile menu when route changes or a nav item is clicked
+  useEffect(() => {
+    const close = () => {
+      const cb = document.getElementById("navbar-open") as HTMLInputElement | null;
+      if (cb) cb.checked = false;
+    };
+    close();
+  }, [pathname]);
+
+  const onNavClick = () => {
+    try {
+      const cb = document.getElementById("navbar-open") as HTMLInputElement | null;
+      if (cb) cb.checked = false;
+    } catch {}
+  };
+
   return (
     <header className="sticky top-3 z-50 mb-6">
       <div className="glass-box mx-4 max-w-screen-xl rounded-3xl px-4 py-3 xl:mx-auto">
@@ -21,7 +41,7 @@ export default function Header() {
             </svg>
           </label>
 
-          <nav aria-label="Header Navigation" className="hidden pl-2 py-6 font-semibold peer-checked:block md:block md:py-0">
+          <nav aria-label="Header Navigation" className="hidden pl-2 py-6 font-semibold peer-checked:block md:block md:py-0" onClick={onNavClick}>
             <ul className="flex flex-col items-center gap-y-4 md:flex-row md:gap-x-6">
               <li>
                 <Link href="/" className="relative z-10 text-gray-800 transition-colors delay-50 ease-in-out hover:text-cyan-700">
