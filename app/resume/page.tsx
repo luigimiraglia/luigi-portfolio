@@ -30,16 +30,16 @@ export default function ResumePage() {
 
   return (
     <main className="mx-4 my-8 xl:mx-auto max-w-screen-xl">
-      <header className="glass-box mb-4 flex items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <header className="glass-box mb-4 flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
         <h1 className="text-lg font-semibold tracking-tight">Resume</h1>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap sm:overflow-visible">
           <button onClick={zoomOut} className="btn-soft" aria-label="Zoom out">−</button>
           <span className="w-14 text-center tabular-nums text-sm">{(scale * 100).toFixed(0)}%</span>
           <button onClick={zoomIn} className="btn-soft" aria-label="Zoom in">+</button>
           <button onClick={resetZoom} className="btn-soft" aria-label="Reset zoom">Reset</button>
           <div className="mx-2 h-5 w-px bg-black/10" />
-          <button onClick={handleDownload} className="btn-primary">Download</button>
-          <button onClick={openNewTab} className="btn-soft">Open in new tab</button>
+          <button onClick={handleDownload} className="btn-primary flex-shrink-0">Download</button>
+          <button onClick={openNewTab} className="btn-soft flex-shrink-0">Open in new tab</button>
         </div>
       </header>
 
