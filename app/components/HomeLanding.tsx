@@ -252,23 +252,25 @@ export default function HomeLanding() {
                 ]}
               />
 
-              {/* Problem → Project → Results timeline */}
-              <StepRoadmap
-                steps={[
-                  {
-                    title: "Problem",
-                    desc: "Students struggle with math and physics",
-                  },
-                  {
-                    title: "Project",
-                    desc: "Learning platform + AI Tutor + Tailored learning path",
-                  },
-                  {
-                    title: "Results",
-                    desc: "45k+ students, 500 paying, $10k raised",
-                  },
-                ]}
-              />
+              {/* Problem → Project → Results timeline (hidden on small screens) */}
+              <div className="hidden sm:block">
+                <StepRoadmap
+                  steps={[
+                    {
+                      title: "Problem",
+                      desc: "Students struggle with math and physics",
+                    },
+                    {
+                      title: "Project",
+                      desc: "Learning platform + AI Tutor + Tailored learning path",
+                    },
+                    {
+                      title: "Results",
+                      desc: "45k+ students, 500 paying, $10k raised",
+                    },
+                  ]}
+                />
+              </div>
 
               <footer className="mt-4 flex flex-wrap items-center gap-3 gap-y-2">
                 <Link
@@ -353,23 +355,25 @@ export default function HomeLanding() {
                 ]}
               />
 
-              {/* Problem → Project → Results timeline */}
-              <StepRoadmap
-                steps={[
-                  {
-                    title: "Problem",
-                    desc: "Fragmented tools and no measurable feedback",
-                  },
-                  {
-                    title: "Project",
-                    desc: "Centralized pipeline, follow‑ups, and analytics",
-                  },
-                  {
-                    title: "Results",
-                    desc: "Prod‑ready MVP, multi‑tenant base, clear KPIs",
-                  },
-                ]}
-              />
+              {/* Problem → Project → Results timeline (hidden on small screens) */}
+              <div className="hidden sm:block">
+                <StepRoadmap
+                  steps={[
+                    {
+                      title: "Problem",
+                      desc: "Fragmented tools and no measurable feedback",
+                    },
+                    {
+                      title: "Project",
+                      desc: "Centralized pipeline, follow‑ups, and analytics",
+                    },
+                    {
+                      title: "Results",
+                      desc: "Prod‑ready MVP, multi‑tenant base, clear KPIs",
+                    },
+                  ]}
+                />
+              </div>
 
               <footer className="mt-4 flex flex-wrap items-center gap-3 gap-y-2">
                 <Link

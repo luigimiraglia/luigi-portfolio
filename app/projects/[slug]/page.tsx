@@ -2,6 +2,7 @@
 import Link from "next/link";
 import CTAs from "../CTAs";
 import Gallery from "../Gallery";
+import StepperMobileAligner from "../StepperMobileAligner";
 
 type Project = {
   slug: string;
@@ -276,7 +277,7 @@ export default function ProjectPage({ params }: any) {
         <h2 className="text-lg font-semibold text-neutral-900">
           Case overview
         </h2>
-        <div className="mt-1 stepper stepper-lg">
+        <div id="case-stepper" className="mt-1 stepper stepper-lg">
           <span className="stepper-line" aria-hidden />
           <span className="stepper-runner" aria-hidden />
           <div className="stepper-item">
@@ -306,6 +307,8 @@ export default function ProjectPage({ params }: any) {
             </div>
           </div>
         </div>
+        {/* Mobile alignment helper (no-op on desktop) */}
+        <StepperMobileAligner targetId="case-stepper" />
       </section>
 
       {/* Details in a single, clean box (no borders/shadows) */}

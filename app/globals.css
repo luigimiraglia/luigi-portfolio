@@ -594,7 +594,7 @@ header:hover > .cursor-blob { opacity: 0.7; }
     left: 17px;
     top: 8%;
     transform: translate(-50%, -50%);
-    animation: runnerY 6s ease-in-out infinite;
+    animation: none;
     transition: top 700ms cubic-bezier(0.22, 1, 0.36, 1);
     will-change: top;
   }
