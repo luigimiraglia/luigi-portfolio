@@ -121,13 +121,15 @@ export default function HomeLanding() {
         <li>
           <article className="rounded-3xl bg-white/80 p-5 shadow-xl backdrop-blur transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.01]">
             <p className="text-4xl font-extrabold tracking-tight text-neutral-900">
-              <Counter to={31} />
+              <span className="text-neutral-900">$</span>
+              <Counter to={10} />
+              <span className="text-neutral-700">k+</span>
             </p>
             <h3 className="mt-1 text-sm font-semibold text-neutral-700">
-              LeetCode problems solved
+              Money raised
             </h3>
             <p className="mt-1 text-sm text-neutral-600">
-              Daily practice to sharpen problem solving
+              In profit from paying users
             </p>
           </article>
         </li>
@@ -199,10 +201,10 @@ export default function HomeLanding() {
             <article className="card-soft p-5">
               <header className="mb-3">
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tight bg-gradient-to-r from-cyan-600 to-sky-500 bg-clip-text text-transparent">
-                  Content Platform
+                  Theoremz.com
                 </h3>
                 <p className="text-sm text-neutral-700">
-                  Static content engine with MDX, blazing SEO and authoring UX
+                  Educational platform for Italian high school students
                 </p>
               </header>
 
@@ -214,11 +216,24 @@ export default function HomeLanding() {
                     { icon: "/typescript.svg", name: "TypeScript" },
                     { icon: "/tailwind.svg", name: "Tailwind" },
                     { icon: "/react.svg", name: "React" },
+                    { icon: "/sanity.svg", name: "Sanity CMS" },
+                    { icon: "/katex.svg", name: "KaTeX" },
+                    { icon: "/firebase.svg", name: "Firestore" },
+                    { icon: "/firebase.svg", name: "Firebase Auth" },
+                    { icon: "/stripe.svg", name: "Stripe" },
+                    { icon: "/vercel.svg", name: "Vercel" },
+                    { icon: "/googleanalytics.svg", name: "GA4" },
                   ].map((t) => (
                     <li key={t.name} className="snap-start">
                       <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-2 py-1 text-xs shadow-sm">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={t.icon} alt={t.name} width={18} height={18} />
+                        <img
+                          className="tech-icon"
+                          src={t.icon}
+                          alt={t.name}
+                          width={22}
+                          height={22}
+                        />
                         <span className="font-medium text-neutral-700">
                           {t.name}
                         </span>
@@ -231,9 +246,9 @@ export default function HomeLanding() {
               {/* Images carousel with arrows */}
               <ImgCarousel
                 images={[
-                  "/theoremz-preview.png",
-                  "/wave_apple.png",
-                  "/logo.png",
+                  "/theoremz1.webp",
+                  "/theoremz2.webp",
+                  "/theoremz3.webp",
                 ]}
               />
 
@@ -242,27 +257,30 @@ export default function HomeLanding() {
                 steps={[
                   {
                     title: "Problem",
-                    desc: "Authors struggle to publish SEO content fast",
+                    desc: "Students struggle with math and physics",
                   },
                   {
                     title: "Project",
-                    desc: "MDX platform + DS + editor workflow",
+                    desc: "Learning platform + AI Tutor + Tailored learning path",
                   },
-                  { title: "Results", desc: "LCP 1.9s, +30% velocity, SEO 98" },
+                  {
+                    title: "Results",
+                    desc: "45k+ students, 500 paying, $10k raised",
+                  },
                 ]}
               />
 
               <footer className="mt-4 flex flex-wrap items-center gap-3 gap-y-2">
                 <Link
                   className="btn-primary"
-                  href="/projects/content-platform"
+                  href="/projects/theoremz"
                   onClick={() =>
                     window.dispatchEvent(
                       new CustomEvent("gm:xp", { detail: { amount: 5 } })
                     )
                   }
                 >
-                  Apri progetto
+                  Learn more
                 </Link>
                 <a
                   className="text-sm font-semibold text-cyan-700 hover:underline whitespace-nowrap"
@@ -279,26 +297,44 @@ export default function HomeLanding() {
             <article className="card-soft p-5">
               <header className="mb-3">
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tight bg-gradient-to-r from-cyan-600 to-sky-500 bg-clip-text text-transparent">
-                  Realtime Chat
+                  LeadLift
                 </h3>
                 <p className="text-sm text-neutral-700">
-                  Fast, resilient messaging with streaming and optimistic UI
+                  Lightweight outbound micro‑CRM: CSV import, sequences,
+                  open/click tracking, and campaign KPIs in one fast UI.
                 </p>
+                <span className="tag-building mt-2">
+                  <span className="bricks" aria-hidden>
+                    <span className="b" />
+                    <span className="b" />
+                    <span className="b" />
+                  </span>
+                  Building
+                </span>
               </header>
 
               {/* Stack carousel */}
               <div className="mt-2 overflow-x-auto snap-x snap-mandatory">
                 <ul className="flex min-w-max gap-2">
                   {[
-                    { icon: "/react.svg", name: "React" },
                     { icon: "/next.svg", name: "Next.js" },
-                    { icon: "/globe.svg", name: "WebSockets" },
+                    { icon: "/typescript.svg", name: "TypeScript" },
+                    { icon: "/postgresql.svg", name: "PostgreSQL" },
+                    { icon: "/prisma.svg", name: "Prisma" },
+                    { icon: "/authjs.svg", name: "Auth.js" },
+                    { icon: "/stripe.svg", name: "Stripe" },
                     { icon: "/vercel.svg", name: "Vercel" },
                   ].map((t) => (
                     <li key={t.name} className="snap-start">
                       <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-2 py-1 text-xs shadow-sm">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={t.icon} alt={t.name} width={18} height={18} />
+                        <img
+                          className="tech-icon"
+                          src={t.icon}
+                          alt={t.name}
+                          width={22}
+                          height={22}
+                        />
                         <span className="font-medium text-neutral-700">
                           {t.name}
                         </span>
@@ -310,7 +346,11 @@ export default function HomeLanding() {
 
               {/* Images carousel with arrows */}
               <ImgCarousel
-                images={["/logo.png", "/wave_apple.png", "/avatar.png"]}
+                images={[
+                  "/leadlift1.webp",
+                  "/leadlift2.webp",
+                  "/leadlift3.webp",
+                ]}
               />
 
               {/* Problem → Project → Results timeline */}
@@ -318,27 +358,30 @@ export default function HomeLanding() {
                 steps={[
                   {
                     title: "Problem",
-                    desc: "Laggy chat and reliability issues",
+                    desc: "Fragmented tools and no measurable feedback",
                   },
                   {
                     title: "Project",
-                    desc: "Edge streaming + WS + optimistic UI",
+                    desc: "Centralized pipeline, follow‑ups, and analytics",
                   },
-                  { title: "Results", desc: "TBT ≈ 0, CLS ≈ 0, ↑NPS" },
+                  {
+                    title: "Results",
+                    desc: "Prod‑ready MVP, multi‑tenant base, clear KPIs",
+                  },
                 ]}
               />
 
               <footer className="mt-4 flex flex-wrap items-center gap-3 gap-y-2">
                 <Link
                   className="btn-primary"
-                  href="/projects/realtime-chat"
+                  href="/projects/leadlift"
                   onClick={() =>
                     window.dispatchEvent(
                       new CustomEvent("gm:xp", { detail: { amount: 5 } })
                     )
                   }
                 >
-                  Apri progetto
+                  Learn more
                 </Link>
                 <a
                   className="text-sm font-semibold text-cyan-700 hover:underline whitespace-nowrap"

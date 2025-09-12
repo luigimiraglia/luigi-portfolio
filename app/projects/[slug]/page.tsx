@@ -1,6 +1,7 @@
 // Image used within Gallery client component
 import Link from "next/link";
 import CTAs from "../CTAs";
+import Gallery from "../Gallery";
 
 type Project = {
   slug: string;
@@ -38,7 +39,8 @@ const DATA: Record<string, Project> = {
       { name: "React", icon: "/react.svg" },
       { name: "Tailwind", icon: "/tailwind.svg" },
     ],
-    problem: "Authors struggle to publish SEO‑ready content fast and consistently.",
+    problem:
+      "Authors struggle to publish SEO‑ready content fast and consistently.",
     solution:
       "Built an MDX platform with a design system, editor workflow, instant previews and automated SEO hygiene.",
     results: [
@@ -59,7 +61,10 @@ const DATA: Record<string, Project> = {
     links: [
       { label: "Live", href: "https://example.com" },
       { label: "Case study (PDF)", href: "/resume.pdf" },
-      { label: "Contact", href: "mailto:work@example.com?subject=Content%20Platform" },
+      {
+        label: "Contact",
+        href: "mailto:work@example.com?subject=Content%20Platform",
+      },
     ],
   },
   "realtime-chat": {
@@ -97,7 +102,114 @@ const DATA: Record<string, Project> = {
     links: [
       { label: "Live", href: "#" },
       { label: "Demo video", href: "#" },
-      { label: "Contact", href: "mailto:work@example.com?subject=Realtime%20Chat" },
+      {
+        label: "Contact",
+        href: "mailto:work@example.com?subject=Realtime%20Chat",
+      },
+    ],
+  },
+  leadlift: {
+    slug: "leadlift",
+    title: "LeadLift",
+    subtitle: "Lightweight outbound micro‑CRM for prospecting and nurturing",
+    kpis: [
+      { label: "Reply rate", value: "+12%" },
+      { label: "Conversion", value: "+6%" },
+      { label: "Deploy", value: "Vercel" },
+    ],
+    hero: "/logo.png",
+    gallery: ["/leadlift1.webp", "/leadlift2.webp", "/leadlift3.webp"],
+    video: "https://www.youtube.com/embed/ysz5S6PUM-U?rel=0",
+    stack: [
+      { name: "Next.js", icon: "/next.svg" },
+      { name: "TypeScript", icon: "/typescript.svg" },
+      { name: "PostgreSQL", icon: "/postgresql.svg" },
+      { name: "Prisma", icon: "/prisma.svg" },
+      { name: "Auth.js", icon: "/authjs.svg" },
+      { name: "Stripe", icon: "/stripe.svg" },
+      { name: "Vercel", icon: "/vercel.svg" },
+    ],
+    problem: "Fragmented tools and no measurable feedback for messaging.",
+    solution:
+      "Centralize pipeline, follow‑ups and analytics with CSV import, sequences, signed links + 1×1 pixel tracking, and campaign KPIs.",
+    results: [
+      "Prod‑ready MVP",
+      "Multi‑tenant base",
+      "Clear KPIs for iteration",
+    ],
+    responsibilities: [
+      "Multi‑tenant MVP design (Next.js 14 + Prisma/Postgres)",
+      "Core CRM: CSV import, pipeline, outreach sequences, email editor",
+      "Tracking: signed links + 1×1 pixel, campaign event store, KPI dashboards",
+      "Stripe billing (checkout/webhooks), pricing models",
+      "Security/data: model design, basic rate‑limit, endpoint protection, audit logs",
+      "Ops: Vercel deploy, env config, Prisma migrations, demo seed",
+      "Docs: onboarding and public demo",
+    ],
+    highlights: [
+      "Signed links + pixel tracking",
+      "CSV import with validation",
+      "KPI dashboard (reply, conversions, revenue)",
+    ],
+    links: [
+      { label: "Live", href: "#" },
+      { label: "Case study (PDF)", href: "/resume.pdf" },
+      { label: "Contact", href: "mailto:work@example.com?subject=LeadLift" },
+    ],
+  },
+  theoremz: {
+    slug: "theoremz",
+    title: "Theoremz",
+    subtitle:
+      "Learning platform for math and physics with clear lessons, interactive exercises, and AI tutor",
+    kpis: [
+      { label: "Lighthouse", value: "95+" },
+      { label: "LCP mobile", value: "< 2s" },
+      { label: "Lessons", value: "1k+" },
+    ],
+    hero: "/theoremz-preview.png",
+    gallery: ["/theoremz1.webp", "/theoremz2.webp", "/theoremz3.webp"],
+    video: "https://www.youtube.com/embed/ysz5S6PUM-U?rel=0",
+    stack: [
+      { name: "Next.js", icon: "/next.svg" },
+      { name: "TypeScript", icon: "/typescript.svg" },
+      { name: "Tailwind", icon: "/tailwind.svg" },
+      { name: "Sanity CMS", icon: "/sanity.svg" },
+      { name: "KaTeX", icon: "/katex.svg" },
+      { name: "Firestore", icon: "/firebase.svg" },
+      { name: "Firebase Auth", icon: "/firebase.svg" },
+      { name: "Stripe", icon: "/stripe.svg" },
+      { name: "GA4", icon: "/googleanalytics.svg" },
+      { name: "Vercel", icon: "/vercel.svg" },
+    ],
+    problem:
+      "Fragmented resources and little actionable guidance — students lack a single place for theory, exercises, and progress.",
+    solution:
+      "SEO‑indexed lessons (SSG/ISR), dynamic routing at scale, Portable Text + KaTeX content from Sanity, notes + quizzes with step‑by‑step correction, and an AI tutor with contextual memory.",
+    results: [
+      "LCP < 2s on mobile",
+      "95+ Lighthouse across pages",
+      "Scalable content and community",
+    ],
+    responsibilities: [
+      "Product strategy & roadmap, UX and AI tutor",
+      "App Router architecture and performance budget",
+      "Sanity schema, Portable Text + KaTeX components, asset pipeline",
+      "Auth & billing: Firebase Auth, Stripe subscriptions",
+      "SEO & performance: SSG/ISR, Core Web Vitals (LCP < 2s, Lighthouse >95)",
+      "Analytics & experimentation: GA4 schema, KPI dashboards, A/B testing",
+      "CI/CD & reliability: Vercel, versioning, error monitoring/logging",
+      "Docs & contributor guide; content quality & media pipeline",
+    ],
+    highlights: [
+      "Dynamic lesson routing (thousands of pages)",
+      "AI tutor with contextual chat",
+      "Campaign‑level analytics (GA4)",
+    ],
+    links: [
+      { label: "Live", href: "https://theoremz.com" },
+      { label: "Case study (PDF)", href: "/resume.pdf" },
+      { label: "Contact", href: "mailto:work@example.com?subject=Theoremz" },
     ],
   },
 };
@@ -113,7 +225,9 @@ export default function ProjectPage({ params }: any) {
         <p className="mt-2 text-neutral-600">
           This project page does not exist. Go back to the homepage.
         </p>
-        <Link className="btn-primary mt-4 inline-flex" href="/">Back home</Link>
+        <Link className="btn-primary mt-4 inline-flex" href="/">
+          Back home
+        </Link>
       </main>
     );
   }
@@ -121,9 +235,13 @@ export default function ProjectPage({ params }: any) {
   return (
     <main className="mx-4 my-8 xl:mx-auto max-w-screen-xl">
       <nav className="mb-4 text-sm text-neutral-600">
-        <Link href="/" className="hover:underline">Home</Link>
+        <Link href="/" className="hover:underline">
+          Home
+        </Link>
         <span className="mx-1">/</span>
-        <Link href="/#roadmap" className="hover:underline">Projects</Link>
+        <Link href="/#roadmap" className="hover:underline">
+          Projects
+        </Link>
         <span className="mx-1">/</span>
         <span className="text-neutral-900 font-semibold">{p.title}</span>
       </nav>
@@ -135,7 +253,10 @@ export default function ProjectPage({ params }: any) {
         <p className="mt-1 text-neutral-700">{p.subtitle}</p>
         <ul className="mt-3 flex flex-wrap gap-2">
           {p.kpis.map((k) => (
-            <li key={k.label} className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-sm shadow-sm">
+            <li
+              key={k.label}
+              className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-sm shadow-sm"
+            >
               <b className="text-neutral-900">{k.value}</b>
               <span className="text-neutral-600">{k.label}</span>
             </li>
@@ -143,42 +264,45 @@ export default function ProjectPage({ params }: any) {
         </ul>
       </header>
 
-      {/* Video (full container) */}
+      {/* Gallery (same images as on homepage) */}
       <section className="glass-box mb-6 px-4 py-4">
         <div className="img-frame relative mx-auto w-[92%] sm:w-[86%] md:w-[72%] overflow-hidden rounded-2xl bg-white">
-          <iframe
-            className="absolute inset-0 h-full w-full"
-            src={p.video || "https://www.youtube.com/embed/ysz5S6PUM-U?rel=0"}
-            title={`${p.title} demo`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+          <Gallery images={p.gallery} />
         </div>
       </section>
 
       {/* Problem → Project → Results */}
-      <section className="glass-box mb-6 px-4 py-4">
-        <h2 className="text-lg font-semibold text-neutral-900">Case overview</h2>
-        <div className="mt-2 stepper">
+      <section className="glass-box mb-6 px-4 py-6">
+        <h2 className="text-lg font-semibold text-neutral-900">
+          Case overview
+        </h2>
+        <div className="mt-1 stepper stepper-lg">
           <span className="stepper-line" aria-hidden />
+          <span className="stepper-runner" aria-hidden />
           <div className="stepper-item">
             <div className="step-text mt-6 text-center sm:text-center">
-              <div className="text-sm font-bold text-cyan-700">Problem</div>
+              <div className="text-sm mt-4 font-bold text-cyan-700">
+                Problem
+              </div>
               <div className="text-[13px] text-neutral-700">{p.problem}</div>
             </div>
           </div>
           <div className="stepper-item">
             <div className="step-text mt-6 text-center sm:text-center">
-              <div className="text-sm font-bold text-cyan-700">Project</div>
+              <div className="text-sm mt-4 font-bold text-cyan-700">
+                Project
+              </div>
               <div className="text-[13px] text-neutral-700">{p.solution}</div>
             </div>
           </div>
           <div className="stepper-item">
             <div className="step-text mt-6 text-center sm:text-center">
-              <div className="text-sm font-bold text-cyan-700">Results</div>
-              <div className="text-[13px] text-neutral-700">{p.results.join(" • ")}</div>
+              <div className="text-sm mt-4 font-bold text-cyan-700">
+                Results
+              </div>
+              <div className="text-[13px] text-neutral-700">
+                {p.results.join(" • ")}
+              </div>
             </div>
           </div>
         </div>
@@ -190,7 +314,10 @@ export default function ProjectPage({ params }: any) {
           <h3 className="text-sm font-semibold text-neutral-800">Stack</h3>
           <ul className="mt-2 flex flex-wrap gap-2">
             {p.stack.map((t) => (
-              <li key={t.name} className="inline-flex items-center gap-2 rounded-full bg-white/85 px-2 py-1 text-xs">
+              <li
+                key={t.name}
+                className="inline-flex items-center gap-2 rounded-full bg-white/85 px-2 py-1 text-xs"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={t.icon} alt={t.name} width={18} height={18} />
                 <span className="text-neutral-700">{t.name}</span>
@@ -200,7 +327,9 @@ export default function ProjectPage({ params }: any) {
         </div>
 
         <div className="mt-4">
-          <h3 className="text-sm font-semibold text-neutral-800">Responsibilities</h3>
+          <h3 className="text-sm font-semibold text-neutral-800">
+            Responsibilities
+          </h3>
           <ul className="mt-2 check-list text-sm text-neutral-800">
             {p.responsibilities.map((r) => (
               <li key={r}>{r}</li>
@@ -221,7 +350,12 @@ export default function ProjectPage({ params }: any) {
       {/* CTAs */}
       <footer className="glass-box mt-6 flex flex-wrap items-center gap-3 px-4 py-4">
         <CTAs links={p.links} />
-        <Link href="#" className="text-sm font-semibold text-cyan-700 hover:underline">Request a walkthrough →</Link>
+        <Link
+          href="#"
+          className="text-sm font-semibold text-cyan-700 hover:underline"
+        >
+          Request a walkthrough →
+        </Link>
       </footer>
     </main>
   );

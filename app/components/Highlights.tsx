@@ -10,10 +10,10 @@ const items = [
     desc: "From shipped products and growth experiments",
   },
   {
-    title: "LeetCode problems solved",
-    metric: 31,
-    suffix: "",
-    desc: "Daily practice to sharpen problem solving",
+    title: "Money raised",
+    metric: 10,
+    suffix: "k$",
+    desc: "In profit from paying users",
   },
   {
     title: "Active users",
@@ -35,7 +35,9 @@ export default function Highlights() {
             <Counter to={it.metric} />
             <span className="text-neutral-700">{it.suffix}</span>
           </p>
-          <h3 className="mt-1 text-sm font-semibold text-neutral-700">{it.title}</h3>
+          <h3 className="mt-1 text-sm font-semibold text-neutral-700">
+            {it.title}
+          </h3>
           <p className="mt-1 text-sm text-neutral-600">{it.desc}</p>
         </article>
       ))}

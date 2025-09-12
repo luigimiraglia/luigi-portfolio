@@ -3,9 +3,10 @@
 import Link from "next/link";
 
 export default function CTAs({ links }: { links: { label: string; href: string }[] }) {
+  const filtered = links.filter((l) => !/case study/i.test(l.label));
   return (
     <>
-      {links.map((l) => {
+      {filtered.map((l) => {
         const isInternal = l.href.startsWith("/");
         const className = l.label === "Live" ? "btn-primary px-4 py-2" : "btn-soft px-4 py-2";
         const onClick = () => {
