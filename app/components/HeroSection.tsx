@@ -13,7 +13,7 @@ export default function HeroSection() {
   useEffect(() => {
     const t = setInterval(() => setRoleIdx((i) => (i + 1) % roles.length), 2200);
     return () => clearInterval(t);
-  }, []);
+  }, [roles.length]);
 
   const onMouseMove = useCallback((e: React.MouseEvent) => {
     const el = wrapRef.current;

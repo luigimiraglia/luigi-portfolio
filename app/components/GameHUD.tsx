@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 
 type AchId = "explorer" | "finisher" | "cmdk" | "cv" | "connect" | "dots2";
 type QuestId = "avatar" | "projects" | "cmdkq";
@@ -104,7 +104,7 @@ export default function GameHUD() {
     localStorage.setItem("gm-quests", JSON.stringify(quests));
   }, [quests]);
 
-  const award = (id: AchId) => {
+  const award = useCallback((id: AchId) => {
     if (unlocked.has(id)) return;
     const ach = ACHIEVEMENTS[id];
     setUnlocked((s) => new Set(s).add(id));
@@ -112,9 +112,20 @@ export default function GameHUD() {
     setToast(`${ach.emoji} Achievement unlocked: ${ach.title}`);
     // auto hide toast (longer)
     setTimeout(() => setToast(null), 4500);
-  };
+  }, [unlocked]);
 
-  const addXp = (amount: number) => setXp((v) => Math.max(0, v + amount));
+  const addXp = useCallback((amount: number) => setXp((v) => Math.max(0, v + amount)), []);
+
+  const completeQuest = useCallback((id: QuestId, reward: number) => {
+    setQuests((q) => {
+      if (q[id]) return q;
+      const next = { ...q, [id]: true };
+      setToast(`✅ Quest completed: ${questTitle(id)} (+${reward} XP)`);
+      setTimeout(() => setToast(null), 4500);
+      setXp((v) => v + reward);
+      return next;
+    });
+  }, []);
 
   // Level calc (100 XP per level)
   const level = Math.floor(xp / 100) + 1;
@@ -164,7 +175,7 @@ export default function GameHUD() {
       window.removeEventListener("gm:xp", onXp as EventListener);
       window.removeEventListener("gm:dot", onDot as EventListener);
     };
-  }, [unlocked]);
+  }, [award, completeQuest, addXp]);
 
   // Observe #roadmap for quest completion (robust attach)
   useEffect(() => {
@@ -204,7 +215,7 @@ export default function GameHUD() {
         window.removeEventListener("hashchange", onHash);
       };
     }
-  }, [quests.projects]);
+  }, [quests.projects, completeQuest]);
 
   // Listen for avatar selection
   useEffect(() => {
@@ -215,7 +226,7 @@ export default function GameHUD() {
     window.addEventListener("avatar:selected", onSel as EventListener);
     return () =>
       window.removeEventListener("avatar:selected", onSel as EventListener);
-  }, [quests.avatar]);
+  }, [quests.avatar, completeQuest]);
 
   // Global scroll achievements (Explorer/Finisher by site scroll depth)
   useEffect(() => {
@@ -236,18 +247,9 @@ export default function GameHUD() {
     // initial check
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [unlocked]);
+  }, [award]);
 
-  function completeQuest(id: QuestId, reward: number) {
-    setQuests((q) => {
-      if (q[id]) return q;
-      const next = { ...q, [id]: true };
-      setToast(`✅ Quest completed: ${questTitle(id)} (+${reward} XP)`);
-      setTimeout(() => setToast(null), 4500);
-      setXp((v) => v + reward);
-      return next;
-    });
-  }
+  
 
   function questTitle(id: QuestId) {
     switch (id) {

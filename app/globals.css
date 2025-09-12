@@ -90,7 +90,14 @@ html { scroll-behavior: smooth; }
   100% { background-position: 200% 50%; }
 }
 .text-shimmer {
-  background: linear-gradient(90deg, #fff, #93c5fd, #e9d5ff, #fff);
+  background: linear-gradient(
+    90deg,
+    #06b6d4,
+    #0ea5e9,
+    #3b82f6,
+    #8b5cf6,
+    #06b6d4
+  );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -248,11 +255,11 @@ header:hover > .cursor-blob { opacity: 0.7; }
 @keyframes pop { 0%{ transform: translate(-50%,-50%) scale(0.9) } 100%{ transform: translate(-50%,-50%) scale(1) } }
 
 /* Simplified emoji stage with stardust */
-.emoji-stage { position: relative; width: 200px; height: 200px; border-radius: 20px; background: transparent; box-shadow: none; overflow: visible; display: grid; place-items: center; }
-.emoji-icon { position: relative; font-size: 72px; filter: drop-shadow(0 6px 12px rgba(2,6,23,0.2)); z-index: 1; }
+.emoji-stage { position: relative; width: 280px; height: 280px; border-radius: 20px; background: transparent; box-shadow: none; overflow: visible; display: grid; place-items: center; margin-bottom: -60px; }
+.emoji-icon { position: relative; font-size: 110px; filter: drop-shadow(0 6px 12px rgba(2,6,23,0.2)); z-index: 1; }
 .stars { position: absolute; inset: 0; pointer-events: none; }
 @keyframes twinkle { from { opacity: .35; transform: scale(.8); } to { opacity: 1; transform: scale(1.1); } }
-.star { position: absolute; width: 3px; height: 3px; border-radius: 9999px; background: rgba(255,255,255,0.95); box-shadow: 0 0 8px rgba(6,182,212,0.55); opacity: .8; animation: twinkle calc(1.8s + (var(--i) * .12s)) ease-in-out infinite alternate; }
+.star { position: absolute; width: 3px; height: 3px; border-radius: 9999px; background: #0b1220; box-shadow: 0 0 8px rgba(14,165,233,0.55); opacity: .9; animation: twinkle calc(1.8s + (var(--i) * .12s)) ease-in-out infinite alternate; }
 .stars .star:nth-child(1){ top:8%; left:18%; }
 .stars .star:nth-child(2){ top:14%; left:68%; }
 .stars .star:nth-child(3){ top:22%; left:38%; }
@@ -273,8 +280,8 @@ header:hover > .cursor-blob { opacity: 0.7; }
   width: 10px;
   height: 10px;
   border-radius: 9999px;
-  background: rgb(59 130 246);
-  box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.15);
+  background: var(--accent);
+  box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.15);
 }
 .timeline-dot-btn {
   background: none;
@@ -314,6 +321,7 @@ header:hover > .cursor-blob { opacity: 0.7; }
   background-image: linear-gradient(135deg, #06b6d4, #0ea5e9);
   box-shadow: 0 8px 24px -10px rgba(6,182,212,0.5);
   transition: transform 150ms ease, box-shadow 200ms ease, filter 200ms ease;
+  white-space: nowrap;
 }
 .btn-primary:hover {
   filter: brightness(1.05);
@@ -331,6 +339,7 @@ header:hover > .cursor-blob { opacity: 0.7; }
   background: rgba(255,255,255,0.8);
   box-shadow: 0 1px 0 0 rgba(0,0,0,0.02), 0 8px 24px -16px rgba(2,6,23,0.15);
   transition: background 150ms ease, transform 150ms ease;
+  white-space: nowrap;
 }
 .btn-soft:hover { background: rgba(255,255,255,0.95); }
 .btn-soft:active { transform: translateY(1px); }
@@ -348,6 +357,25 @@ header:hover > .cursor-blob { opacity: 0.7; }
   text-transform: uppercase;
   color: rgb(21 94 117);
   background: rgba(6,182,212,0.12);
+}
+
+/* Lighter variant for high contrast on bright backgrounds */
+.kicker-white {
+  background: rgba(14,165,233,0.12); /* light sky tint */
+  color: #0b1220;
+  padding: 0.35rem 0.75rem; /* slightly larger to stand out */
+  white-space: nowrap; /* prevent wrapping on mobile */
+  font-size: clamp(0.68rem, 2.7vw, 0.78rem); /* responsive size to fit */
+}
+.kicker-white .pulse-dot {
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.12);
+}
+
+@media (max-width: 360px) {
+  .kicker-white { padding: 0.3rem 0.6rem; }
+  .kicker-white .pulse-dot { width: 6px; height: 6px; box-shadow: 0 0 0 3px rgba(34,197,94,0.12); }
 }
 
 .accent-underline {
@@ -491,3 +519,53 @@ header:hover > .cursor-blob { opacity: 0.7; }
   box-shadow: 0 1px 0 0 rgba(0,0,0,0.02), 0 24px 48px -24px rgba(2,6,23,0.18);
   backdrop-filter: blur(6px);
 }
+
+/* Fixed aspect ratio utility for project images */
+.img-frame { aspect-ratio: 16 / 9; }
+
+/* Horizontal stepper for Problem → Project → Results */
+.stepper { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 40px auto; column-gap: 10px; row-gap: 22px; align-items: start; padding: 8px 0; }
+.stepper-line { position: absolute; left: 8%; right: 8%; top: 20px; height: 3px; border-radius: 9999px; background: linear-gradient(90deg, rgba(6,182,212,0.2), rgba(34,211,238,0.6), rgba(6,182,212,0.2)); background-size: 200% 100%; animation: flow 4s linear infinite; filter: saturate(1.2); }
+.stepper-item { display: grid; place-items: center; position: relative; z-index: 1; }
+/* Force dot in row 1 and text in row 2 for stable alignment */
+.stepper-item .timeline-dot { grid-row: 1; }
+.stepper-item > .step-text { grid-row: 2; }
+/* Runner orb moving along the track */
+.stepper-runner { position: absolute; top: 20px; left: 16.666%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 9999px; background: radial-gradient(circle at 40% 40%, var(--accent-2), var(--accent) 60%, rgba(14,165,233,0.2)); box-shadow: 0 0 0 6px rgba(14,165,233,0.15), 0 8px 18px -10px rgba(2,6,23,0.5); animation: runner 6s ease-in-out infinite; z-index: 0; }
+@keyframes runner { 0% { left: 16.666% } 33% { left: 50% } 66% { left: 83.333% } 100% { left: 16.666% } }
+@keyframes flow { 0% { background-position: 0% 0% } 100% { background-position: -200% 0% } }
+
+/* Mobile responsive variant: vertical stepper */
+@media (max-width: 640px) {
+  .stepper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 18px;
+    padding-left: 34px; /* space for the vertical line */
+  }
+  .stepper-line {
+    left: 17px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: auto;
+    transform: none;
+    background: linear-gradient(180deg, rgba(6,182,212,0.2), rgba(34,211,238,0.6), rgba(6,182,212,0.2));
+    background-size: 100% 200%;
+    animation: flowY 4s linear infinite;
+  }
+  .stepper-runner {
+    left: 17px;
+    top: 8%;
+    transform: translate(-50%, -50%);
+    animation: runnerY 6s ease-in-out infinite;
+    transition: top 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: top;
+  }
+  .stepper-item { place-items: start; }
+  .stepper-item .step-text { text-align: left; margin-top: 2px; }
+}
+
+@keyframes flowY { 0% { background-position: 0 0 } 100% { background-position: 0 -200% } }
+@keyframes runnerY { 0% { top: 8% } 33% { top: 40% } 66% { top: 72% } 100% { top: 8% } }

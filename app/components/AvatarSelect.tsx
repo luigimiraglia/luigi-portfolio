@@ -75,6 +75,8 @@ const AVATARS: Avatar[] = [
 export default function AvatarSelect() {
   const [started, setStarted] = useState(false);
   const [selected, setSelected] = useState<string>("frontend");
+  // Track avatars seen to avoid XP farming on spam
+  const seenRef = useRef<Set<string>>(new Set(["frontend"]));
 
   // Focus the START button for immediate interaction
   const startBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -93,13 +95,22 @@ export default function AvatarSelect() {
       window.dispatchEvent(
         new CustomEvent("avatar:selected", { detail: { avatar: a } })
       );
-      window.dispatchEvent(new CustomEvent("gm:xp", { detail: { amount: 5 } }));
+      if (!seenRef.current.has(a.id)) {
+        seenRef.current.add(a.id);
+        window.dispatchEvent(
+          new CustomEvent("gm:xp", { detail: { amount: 5 } })
+        );
+      }
     } catch {}
   }
 
   // One-at-a-time carousel view with arrows + 3D tilt
   const currentIndex = useMemo(
-    () => Math.max(0, AVATARS.findIndex((x) => x.id === selected)),
+    () =>
+      Math.max(
+        0,
+        AVATARS.findIndex((x) => x.id === selected)
+      ),
     [selected]
   );
 
@@ -148,7 +159,7 @@ export default function AvatarSelect() {
         <div className="text-sm text-neutral-600">Ready player?</div>
         <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
           <span className="text-shimmer">Press START</span>
-          <span className="ml-2 text-neutral-800">to select your avatar</span>
+          <span className="ml-2 text-neutral-900">to select your avatar</span>
         </h3>
         <button
           ref={startBtnRef}
@@ -164,7 +175,7 @@ export default function AvatarSelect() {
         </button>
         <div className="flex items-center gap-2 text-xs text-neutral-500">
           <span className="pulse-dot" aria-hidden />
-          <span>Tip: premi Invio o Spazio</span>
+          <span>Tip: press Space or Enter</span>
         </div>
       </div>
     );
@@ -181,21 +192,34 @@ export default function AvatarSelect() {
       <button
         type="button"
         aria-label="Previous avatar"
-        className="btn-soft absolute -left-3 top-1/2 -translate-y-1/2 rounded-full px-2 py-2"
+        className="btn-soft absolute left-2 sm:-left-10 top-1/2 -translate-y-1/2 rounded-full px-2 py-2"
         onClick={prev}
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
       </button>
 
       <div
         ref={cardRef}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        className="avatar-card text-left mx-8"
+        className="avatar-card text-left mx-4 sm:mx-8"
         onClick={() => selectByIndex(currentIndex)}
       >
         <div className="flex items-center gap-3">
-          <span className="avatar-emoji" aria-hidden>{a.emoji}</span>
+          <span className="avatar-emoji" aria-hidden>
+            {a.emoji}
+          </span>
           <div>
             <div className="avatar-title">{a.name}</div>
             <div className="avatar-tag">{a.tag}</div>
@@ -204,26 +228,44 @@ export default function AvatarSelect() {
         {/* Skill icons */}
         <ul className="mt-3 tech-list">
           {a.top.map((t) => (
-            <li key={t} className="inline-flex items-center gap-2 rounded-full bg-white/80 px-2 py-1 backdrop-blur">
+            <li
+              key={t}
+              className="inline-flex items-center gap-2 rounded-full bg-white/80 px-2 py-1 backdrop-blur"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={iconFor(t)} alt={t} width={22} height={22} className="tech-icon" />
+              <img
+                src={iconFor(t)}
+                alt={t}
+                width={22}
+                height={22}
+                className="tech-icon"
+              />
               <span className="text-xs font-medium text-neutral-700">{t}</span>
             </li>
           ))}
         </ul>
 
         {/* Flavor panel */}
-        <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3" aria-label="Character traits">
+        <div
+          className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3"
+          aria-label="Character traits"
+        >
           <article className="rounded-lg bg-white/85 p-3 shadow-sm">
-            <div className="text-xs font-semibold text-neutral-700">Abilities</div>
+            <div className="text-xs font-semibold text-neutral-700">
+              Abilities
+            </div>
             <div className="text-sm text-neutral-700">{a.ability}</div>
           </article>
           <article className="rounded-lg bg-white/85 p-3 shadow-sm">
-            <div className="text-xs font-semibold text-neutral-700">Weakness</div>
+            <div className="text-xs font-semibold text-neutral-700">
+              Weakness
+            </div>
             <div className="text-sm text-neutral-700">{a.weakness}</div>
           </article>
           <article className="rounded-lg bg-white/85 p-3 shadow-sm">
-            <div className="text-xs font-semibold text-neutral-700">Superpower</div>
+            <div className="text-xs font-semibold text-neutral-700">
+              Superpower
+            </div>
             <div className="text-sm text-neutral-700">{a.superpower}</div>
           </article>
         </div>
@@ -232,10 +274,21 @@ export default function AvatarSelect() {
       <button
         type="button"
         aria-label="Next avatar"
-        className="btn-soft absolute -right-3 top-1/2 -translate-y-1/2 rounded-full px-2 py-2"
+        className="btn-soft absolute right-2 sm:-right-10 top-1/2 -translate-y-1/2 rounded-full px-2 py-2"
         onClick={next}
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
       </button>
 
       <div className="mt-2 text-center text-xs text-neutral-600">

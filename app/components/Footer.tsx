@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <div className="flex text-sm sm:text-lg -bottom-0 w-screen bg-gradient-to-tr from-sky-600/90 to-blue-800/90 space-x-6  sm:space-x-20 justify-center py-10 font-light text-white">
       <div className="flex flex-col">
         <h3 className="font-bold">Pages</h3>
-        <p>Home</p>
-        <p>Projects</p>
-        <p>About</p>
+        <Link href="/" className="hover:underline">Home</Link>
+        <Link href="/#roadmap" className="hover:underline">Projects</Link>
+        <Link href="/resume" className="hover:underline">Resume</Link>
       </div>
       <div className="flex flex-col">
         <h3 className="font-bold">Contact</h3>

@@ -34,11 +34,6 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800 transition-colors delay-50 ease-in-out hover:text-cyan-700">
-                  About
-                </Link>
-              </li>
-              <li>
                 <Link href="/resume" className="btn-soft px-4 py-2">
                   Resume
                 </Link>
