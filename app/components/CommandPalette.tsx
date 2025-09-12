@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 type Cmd = {
@@ -16,21 +16,24 @@ export default function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const scrollTo = (sel: string) => {
+  const goto = useCallback((sel: string, hash: string) => {
     const el = document.querySelector(sel) as HTMLElement | null;
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      router.push(`/${hash}`);
+    }
+  }, [router]);
 
   const commands: Cmd[] = useMemo(
     () => [
       { id: "resume", label: "View Resume", run: () => router.push("/resume") },
-      { id: "projects", label: "Go to Projects", run: () => scrollTo("#projects") },
-      { id: "skills", label: "Go to Technologies", run: () => scrollTo("#skills") },
+      { id: "projects", label: "Go to Projects", run: () => goto("#roadmap", "#roadmap") },
+      { id: "skills", label: "Go to Technologies", run: () => goto("#skills", "#skills") },
       { id: "download", label: "Download CV (PDF)", run: () => window.open("/resume.pdf", "_blank") },
       { id: "top", label: "Back to top", run: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
     ],
-    [router]
+    [goto, router]
   );
 
   const filtered = useMemo(() => {
@@ -52,6 +55,7 @@ export default function CommandPalette() {
     const onOpen = () => {
       setOpen(true);
       setTimeout(() => inputRef.current?.focus(), 0);
+      try { window.dispatchEvent(new CustomEvent("gm:unlock", { detail: { id: "cmdk" } })); } catch {}
     };
     window.addEventListener("open-cmdk", onOpen as EventListener);
     return () => {

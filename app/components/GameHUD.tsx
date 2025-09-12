@@ -358,6 +358,16 @@ export default function GameHUD() {
               <a className="btn-primary" href="/resume.pdf" download>
                 Download CV
               </a>
+              <a
+                className="inline-flex items-center gap-2 rounded-xl bg-neutral-900/90 text-white px-4 py-2 transition-colors hover:bg-neutral-900"
+                href="https://github.com/luigimiraglia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/github-white.svg" alt="GitHub" width={18} height={18} />
+                <span>GitHub</span>
+              </a>
               <a className="btn-soft" href="/resume">
                 View Resume
               </a>

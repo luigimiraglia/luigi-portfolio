@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FluidCursor from "./components/FluidCursor";
 import GameHUD from "./components/GameHUD";
+import CommandPalette from "./components/CommandPalette";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
       >
         <FluidCursor />
         <GameHUD />
+        <CommandPalette />
         <div className="relative z-10">
           <Header />
           {children}

@@ -42,7 +42,7 @@ export default function Header() {
           </label>
 
           <nav aria-label="Header Navigation" className="hidden pl-2 py-6 font-semibold peer-checked:block md:block md:py-0" onClick={onNavClick}>
-            <ul className="flex flex-col items-center gap-y-4 md:flex-row md:gap-x-6">
+            <ul className="flex flex-col items-center gap-y-4 md:flex-row md:gap-x-4">
               <li>
                 <Link href="/" className="relative z-10 text-gray-800 transition-colors delay-50 ease-in-out hover:text-cyan-700">
                   Home
@@ -57,6 +57,18 @@ export default function Header() {
                 <Link href="/resume" className="btn-soft px-4 py-2">
                   Resume
                 </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/luigimiraglia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-neutral-900/90 text-white px-4 py-2 transition-colors hover:bg-neutral-900"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/github-white.svg" alt="GitHub" width={18} height={18} />
+                  <span>GitHub</span>
+                </a>
               </li>
               <li className="mt-2 sm:mt-0">
               <Link
