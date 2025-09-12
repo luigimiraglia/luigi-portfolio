@@ -1,13 +1,11 @@
-import HeroSection from "./components/HeroSection";
-import ProjectsPreview from "./components/ProjectsPreview";
-import Technologies from "./components/Technologies";
+import HomeLanding from "./components/HomeLanding";
+import CommandPalette from "./components/CommandPalette";
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <ProjectsPreview />
-      <Technologies />
+      <CommandPalette />
+      <HomeLanding />
     </>
   );
 }

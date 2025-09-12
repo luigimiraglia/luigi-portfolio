@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 interface TechnologyProps {
@@ -8,17 +7,17 @@ interface TechnologyProps {
 
 export default function Technology({ name, iconPath }: TechnologyProps) {
   return (
-    <div className="flex gap-2 sm:gap-2.5 bg-gray-100/70 p-1 pr-3 sm:pr-4 rounded-full h-fit">
+    <span className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-gray-100/70 p-1 pr-3 sm:pr-4">
       <Image
-        className="p-1 sm:p-1.5 bg-white rounded-full h-7 w-7 sm:h-9 sm:w-9"
+        className="h-7 w-7 rounded-full bg-white p-1 sm:h-9 sm:w-9 sm:p-1.5"
         src={iconPath}
         alt={name}
         width={40}
         height={40}
       />
-      <p className="text-[13px] sm:text-[16px] font-semibold opacity-95 h-fit my-auto font-stretch-105%">
+      <span className="my-auto h-fit text-[13px] font-stretch-105% font-semibold opacity-95 sm:text-[16px]">
         {name}
-      </p>
-    </div>
+      </span>
+    </span>
   );
 }

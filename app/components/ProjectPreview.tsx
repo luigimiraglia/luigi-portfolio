@@ -10,52 +10,63 @@ export default function ProjectPreview({
   liveUrl,
   repoUrl,
 }: ProjectPreviewProps) {
-  const [allVisible, setAllVIsible] = useState(false);
+  const [allVisible, setAllVisible] = useState(false);
+  const short = `${description.split(" ").splice(0, 18).join(" ")}...`;
+
   return (
-    <div className="flex flex-col bg-white m-4 p-3 mr-0 gap-4 rounded-xl sm:min-w-80 justify-between h-fit">
-      <div>
-        <Image
-          className="w-auto border-2 mb-2 border-gray-200 rounded-xl"
-          src={iconPath}
-          alt="name"
-          width={3000}
-          height={1800}
-        />
-        <p className="font-semibold font-stretch-105% text-lg">{name}</p>
-        <p className="text-wrap text-sm">
-          {allVisible === true
-            ? description
-            : `${description.split(" ").splice(0, 15).join(" ")}...`}
-          <span
-            className="text-wrap text-[11px] ml-1 bg-gray-100 rounded-md py-0.5 px-1.5"
-            onClick={() => setAllVIsible(!allVisible)}
-          >
-            {allVisible === true ? "Hide" : "Expand"}
-          </span>
-        </p>
-      </div>
-      <div className="flex gap-2 justify-center">
-        <a
-          className="rounded-lg py-1 px-3 bg-gradient-to-r to-blue-600/90 from-violet-800/90 hover:from-blue-600/90 hover:to-violet-800/90 transition-colors duration-500 ease-in-out text-white"
-          href={liveUrl}
-          target="_blank"
-        >
-          <p className="font-semibold">Live Website</p>
-        </a>
-        <a
-          className="flex gap-1 border-2 rounded-lg py-0.5 px-2.5"
-          href={repoUrl}
-          target="_blank"
-        >
-          <Image
-            className="h-6 w-6"
-            src="/github.svg"
-            alt="github logo"
-            height={40}
-            width={40}
-          />
-          <p className="my-auto h-fit font-semibold">GitHub Repo</p>
-        </a>
+    <div className="group m-4 mr-0 h-fit sm:min-w-80">
+      <div className="relative rounded-2xl p-[1px] transition-transform duration-300 ease-out will-change-transform group-hover:-translate-y-0.5 group-hover:scale-[1.01] bg-gradient-to-r from-violet-400/60 via-blue-400/60 to-violet-400/60">
+        <div className="flex h-full flex-col justify-between gap-4 rounded-2xl bg-white p-3">
+          <div>
+            <Image
+              className="w-auto rounded-xl border-2 border-gray-200"
+              src={iconPath}
+              alt={name}
+              width={3000}
+              height={1800}
+            />
+            <p className="mt-2 text-lg font-semibold font-stretch-105%">{name}</p>
+            <p className="text-sm text-neutral-700">
+              {allVisible ? description : short}
+              <button
+                className="ml-1 rounded-md bg-gray-100 px-1.5 py-0.5 text-[11px] hover:bg-gray-200"
+                onClick={() => setAllVisible((v) => !v)}
+                aria-expanded={allVisible}
+              >
+                {allVisible ? "Hide" : "Expand"}
+              </button>
+            </p>
+          </div>
+          <div className="flex justify-center gap-2">
+            {liveUrl && (
+              <a
+                className="rounded-lg bg-gradient-to-r from-violet-700 to-blue-600 px-3 py-1 text-white transition-colors duration-300 ease-in-out hover:from-blue-600 hover:to-violet-700"
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p className="font-semibold">Live Site</p>
+              </a>
+            )}
+            {repoUrl && (
+              <a
+                className="flex items-center gap-1 rounded-lg border-2 px-2.5 py-0.5"
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  className="h-6 w-6"
+                  src="/github.svg"
+                  alt="github logo"
+                  height={40}
+                  width={40}
+                />
+                <p className="my-auto h-fit font-semibold">GitHub</p>
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

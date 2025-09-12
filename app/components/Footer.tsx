@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="flex text-sm sm:text-lg -bottom-0 w-screen bg-gradient-to-tr to-blue-600/90 from-violet-800/90  space-x-6  sm:space-x-20 justify-center py-10 font-light text-white">
+    <div className="flex text-sm sm:text-lg -bottom-0 w-screen bg-gradient-to-tr from-sky-600/90 to-blue-800/90 space-x-6  sm:space-x-20 justify-center py-10 font-light text-white">
       <div className="flex flex-col">
         <h3 className="font-bold">Pages</h3>
         <p>Home</p>
