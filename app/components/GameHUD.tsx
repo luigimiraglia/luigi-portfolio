@@ -293,9 +293,9 @@ export default function GameHUD() {
                   <h3 className="text-lg font-bold text-neutral-900">
                     Luigi Miraglia
                   </h3>
-                  <div className="flex items-center gap-2 text-sm text-neutral-600">
-                    <span className="pulse-dot" aria-hidden />
-                    <span>Open to opportunities</span>
+                  <div className="text-sm text-neutral-700">
+                    <span aria-hidden>🟢</span>
+                    <span className="ml-2">Open to internship and early career opportunities</span>
                   </div>
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function GameHUD() {
                   📅 Duration
                 </div>
                 <div className="text-sm text-neutral-600">
-                  Immediate start • Full-time/Contract
+                  Summer 2026 internship • 3–4 months • Full-time
                 </div>
               </div>
               <div>
@@ -321,7 +321,7 @@ export default function GameHUD() {
                   🌍 Location
                 </div>
                 <div className="text-sm text-neutral-600">
-                  San Francisco Bay Area • USA
+                  San Francisco Bay Area • Open to Europe (Berlin, London, Nordics)
                 </div>
               </div>
             </section>
@@ -331,15 +331,15 @@ export default function GameHUD() {
                 🛠 Tech stack
               </div>
               <div className="grid grid-cols-1 gap-1 text-sm text-neutral-700 sm:grid-cols-2">
-                <ul className="list-disc pl-5">
-                  <li>Next.js, React, TypeScript</li>
-                  <li>Tailwind, CSS, UI/UX</li>
-                  <li>Performance, a11y, SEO</li>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><span className="font-semibold text-neutral-800">Frontend:</span> Next.js, React, TypeScript, Tailwind, CSS, UI/UX design</li>
+                  <li><span className="font-semibold text-neutral-800">Backend:</span> Node.js, Express, REST APIs, WebSockets</li>
+                  <li><span className="font-semibold text-neutral-800">Databases:</span> PostgreSQL, Prisma ORM, MongoDB, SQL basics</li>
                 </ul>
-                <ul className="list-disc pl-5">
-                  <li>Node.js, APIs, WebSockets</li>
-                  <li>Prisma, NoSQL/SQL basics</li>
-                  <li>AI integration (LLMs, RAG)</li>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><span className="font-semibold text-neutral-800">DevOps & Cloud:</span> Vercel, Docker (basics), Git/GitHub CI</li>
+                  <li><span className="font-semibold text-neutral-800">AI/ML:</span> LLM integration, RAG pipelines, embeddings, prompt engineering</li>
+                  <li><span className="font-semibold text-neutral-800">Other:</span> Performance optimization, accessibility (a11y), SEO</li>
                 </ul>
               </div>
             </section>
@@ -349,8 +349,7 @@ export default function GameHUD() {
                 💡 What I bring
               </div>
               <p className="text-sm text-neutral-700">
-                Shipping fast with high quality. Strong focus on performance
-                (LCP &lt; 2s), DX and clean, accessible UI.
+                Relentless work ethic, energy, and adaptability. I thrive in fast-paced teams, push myself to go the extra mile, and stay focused on collective success. Always ready to learn quickly and contribute wherever needed.
               </p>
             </section>
 
